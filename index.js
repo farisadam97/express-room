@@ -3,13 +3,11 @@ require('dotenv').config()
 
 const {SESSION_SECRET} = process.env
 const express = require('express')
-const session = require("express-session");
-const flash = require("express-flash")
 const path = require('path')
 
 // import router 
 const user = require('./routers/users')
-// const dashboard = require('./routers/dashboard')
+// const dashboard = require('./routers/dashboards')
 
 const app = express()
 
@@ -19,9 +17,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
-app.use(flash())
-
 app.use(user)
 // app.use(dashboard)
 
